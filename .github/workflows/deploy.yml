@@ -37,6 +37,11 @@ jobs:
       - name: Prepare SPA fallback
         run: cp dist/index.html dist/404.html
 
+      - name: Prepare projects route
+        run: |
+          mkdir -p dist/projets
+          cp dist/index.html dist/projets/index.html
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
