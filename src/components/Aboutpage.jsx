@@ -8,6 +8,8 @@ import {
   useTilt,
 } from './Sections.jsx' // adapte le chemin au nom de ton fichier de composants
 
+const basePath = import.meta.env.BASE_URL
+
 const services = [
   {
     title: 'Identités visuelles',
@@ -90,7 +92,7 @@ function AboutPage() {
             >
               <img
                 alt="Portrait de Nina entourée de rayons roses."
-                src="/images/alma-portrait.png"
+                src={`${basePath}images/alma-portrait.png`}
               />
               <figcaption className="eyebrow">Une idée, puis une forme.</figcaption>
             </figure>
@@ -110,7 +112,7 @@ function AboutPage() {
               </div>
               <div className="ap-actions">
                 <ArrowLink
-                  href="/sources/CV_derniere_version.pdf"
+                  href={`${basePath}sources/CV_derniere_version.pdf`}
                   rel="noopener noreferrer"
                   target="_blank"
                   tone="lavender"

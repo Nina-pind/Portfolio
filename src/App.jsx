@@ -11,7 +11,11 @@ import {
 } from './components/PortfolioSections.jsx'
 
 function App() {
-  const isProjectsArchive = window.location.pathname.replace(/\/+$/, '') === '/projets'
+  const basePath = import.meta.env.BASE_URL
+  const appPath = window.location.pathname.startsWith(basePath)
+    ? `/${window.location.pathname.slice(basePath.length)}`
+    : window.location.pathname
+  const isProjectsArchive = appPath.replace(/\/+$/, '') === '/projets'
 
   if (isProjectsArchive) {
     return (

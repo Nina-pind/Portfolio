@@ -5,6 +5,7 @@ import sweatBackArtwork from '../assets/Mesprojets/sweatmmi/Back pull BLANC noir
 import hieroDancerArtwork from '../assets/Mesprojets/flyerhiero/danseuse.jpg'
 
 const email = 'ninapinardel@gmail.com'
+const basePath = import.meta.env.BASE_URL
 
 /* Inclinaison 3D d'un élément qui suit la souris (desktop uniquement) */
 function useTilt(maxTilt = 7) {
@@ -158,7 +159,7 @@ function Header() {
         </button>
         <div className="header-links">
           <a href={`mailto:${email}`}>Contactez-moi</a>
-          <a href="/sources/CV_derniere_version.pdf" rel="noopener noreferrer" target="_blank">
+          <a href={`${basePath}sources/CV_derniere_version.pdf`} rel="noopener noreferrer" target="_blank">
             CV
           </a>
         </div>
@@ -182,7 +183,7 @@ function HeroSection() {
           <img
             alt="Portrait de Nina entourée de rayons roses."
             className="hero-portrait"
-            src="/images/alma-portrait.png"
+            src={`${basePath}images/alma-portrait.png`}
           />
         </div>
         <p className="hero-role">Portfolio · Création Numérique</p>
@@ -194,7 +195,7 @@ function HeroSection() {
         <span className="hero-signature">Découvrons la suite.</span>
       </div>
       <div className="hero-actions">
-        <ArrowLink href="/projets" tone="lavender">
+        <ArrowLink href={`${basePath}projets`} tone="lavender">
           Voir les projets
         </ArrowLink>
         <ArrowLink href={`mailto:${email}`}>
@@ -298,7 +299,7 @@ function ProjectsSection() {
           <ProjectCard index={index} key={project.title} project={project} />
         ))}
       </div>
-      <a className="text-link all-projects" href="/projets">
+      <a className="text-link all-projects" href={`${basePath}projets`}>
         <span>Tous les projets · 12</span>
         <span aria-hidden="true">↗</span>
       </a>
@@ -320,7 +321,7 @@ function AboutSection() {
             alt=""
             aria-hidden="true"
             className="about-portrait"
-            src="/images/alma-portrait.png"
+            src={`${basePath}images/alma-portrait.png`}
           />
           <h2 id="about-title">
             À PROPOS
@@ -423,7 +424,7 @@ function ContactSection() {
                 Écrivez-moi
               </ArrowLink>
               <ArrowLink
-                href="/sources/CV_derniere_version.pdf"
+                href={`${basePath}sources/CV_derniere_version.pdf`}
                 rel="noopener noreferrer"
                 target="_blank"
               >

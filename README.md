@@ -1,5 +1,14 @@
 # React + Vite
 
+## Déploiement GitHub Pages
+
+Le portfolio est publié automatiquement sur GitHub Pages à chaque push sur `main`.
+Le workflow GitHub Actions construit le site avec Vite puis publie le dossier `dist`.
+Il génère également une page de repli pour que la route `/projets` fonctionne après
+un rafraîchissement.
+
+Adresse du site : https://nina-pind.github.io/Portfolio/
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

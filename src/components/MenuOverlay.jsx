@@ -3,16 +3,20 @@ import { createPortal } from 'react-dom'
 import './MenuOverlay.css'
 
 const email = 'ninapinardel@gmail.com'
+const basePath = import.meta.env.BASE_URL
 
 function MenuOverlay({ onClose }) {
   const dialogRef = useRef(null)
   const closeButtonRef = useRef(null)
-  const isProjectsPage = window.location.pathname.replace(/\/$/, '') === '/projets'
+  const appPath = window.location.pathname.startsWith(basePath)
+    ? `/${window.location.pathname.slice(basePath.length)}`
+    : window.location.pathname
+  const isProjectsPage = appPath.replace(/\/$/, '') === '/projets'
   const destinations = [
-    { label: 'Accueil', href: isProjectsPage ? '/' : '#top' },
-    { label: 'Projets', href: '/projets' },
-    { label: 'À propos', href: isProjectsPage ? '/#about' : '#about' },
-    { label: 'Contact', href: isProjectsPage ? '/#contact' : '#contact' },
+    { label: 'Accueil', href: isProjectsPage ? basePath : '#top' },
+    { label: 'Projets', href: `${basePath}projets` },
+    { label: 'À propos', href: isProjectsPage ? `${basePath}#about` : '#about' },
+    { label: 'Contact', href: isProjectsPage ? `${basePath}#contact` : '#contact' },
   ]
 
   function closeOnInternalLink(event) {
@@ -140,7 +144,7 @@ function MenuOverlay({ onClose }) {
             </div>
             <a
               className="menu-overlay__cv"
-              href="/sources/CV_derniere_version.pdf"
+              href={`${basePath}sources/CV_derniere_version.pdf`}
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -151,7 +155,7 @@ function MenuOverlay({ onClose }) {
                 E-mail <span aria-hidden="true">↗</span>
               </a>
               <a
-                href={isProjectsPage ? '/#contact' : '#contact'}
+                href={isProjectsPage ? `${basePath}#contact` : '#contact'}
                 onClick={closeOnInternalLink}
               >
                 Me contacter <span aria-hidden="true">↗</span>
