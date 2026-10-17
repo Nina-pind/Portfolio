@@ -1,4 +1,5 @@
 import './index.css'
+import AboutPage from './components/Aboutpage.jsx'
 import BackToTopButton from './components/BackToTopButton.jsx'
 import ProjectsArchive from './components/ProjectsArchive.jsx'
 import {
@@ -15,9 +16,18 @@ function App() {
   const appPath = window.location.pathname.startsWith(basePath)
     ? `/${window.location.pathname.slice(basePath.length)}`
     : window.location.pathname
-  const isProjectsArchive = appPath.replace(/\/+$/, '') === '/projets'
+  const route = appPath.replace(/\/+$/, '') || '/'
 
-  if (isProjectsArchive) {
+  if (route === '/a-propos') {
+    return (
+      <>
+        <AboutPage />
+        <BackToTopButton />
+      </>
+    )
+  }
+
+  if (route === '/projets') {
     return (
       <>
         <div className="portfolio-shell" id="top" tabIndex="-1">

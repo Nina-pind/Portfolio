@@ -6,7 +6,7 @@ import {
   SocialLinks,
   email,
   useTilt,
-} from './Sections.jsx' // adapte le chemin au nom de ton fichier de composants
+} from './PortfolioSections.jsx'
 
 const basePath = import.meta.env.BASE_URL
 
@@ -45,7 +45,7 @@ const timeline = [
 ]
 
 function AboutPage() {
-  const tilt = useTilt(6)
+  const { ref: cardRef, onPointerLeave: resetCardTilt, onPointerMove: updateCardTilt } = useTilt(6)
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -86,9 +86,9 @@ function AboutPage() {
           <div className="ap-hero-grid">
             <figure
               className="ap-card"
-              onPointerLeave={tilt.onPointerLeave}
-              onPointerMove={tilt.onPointerMove}
-              ref={tilt.ref}
+              onPointerLeave={resetCardTilt}
+              onPointerMove={updateCardTilt}
+              ref={cardRef}
             >
               <img
                 alt="Portrait de Nina entourée de rayons roses."

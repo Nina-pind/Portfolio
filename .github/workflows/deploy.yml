@@ -42,6 +42,11 @@ jobs:
           mkdir -p dist/projets
           cp dist/index.html dist/projets/index.html
 
+      - name: Prepare about route
+        run: |
+          mkdir -p dist/a-propos
+          cp dist/index.html dist/a-propos/index.html
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 

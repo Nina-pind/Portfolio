@@ -6,6 +6,7 @@ import hieroDancerArtwork from '../assets/Mesprojets/flyerhiero/danseuse.jpg'
 
 const email = 'ninapinardel@gmail.com'
 const basePath = import.meta.env.BASE_URL
+const appBasePath = window.location.pathname.startsWith(basePath) ? basePath : '/'
 
 /* Inclinaison 3D d'un élément qui suit la souris (desktop uniquement) */
 function useTilt(maxTilt = 7) {
@@ -345,7 +346,7 @@ function AboutSection() {
             Je suis actuellement en BUT MMI, parcours Création numérique, et ce portfolio rassemble une partie de ce que j’ai pu imaginer, expérimenter et réaliser au fil de mon parcours.
           </p>
           <p className="about-lead">Bienvenue dans mon univers ! ♡</p>
-          <ArrowLink href={`mailto:${email}`} className="about-link">
+          <ArrowLink href={`${appBasePath}a-propos`} className="about-link">
             En savoir plus
           </ArrowLink>
         </div>
@@ -420,7 +421,7 @@ function ContactSection() {
               <a className="contact-email" href={`mailto:${email}`}>
                 {email}
               </a>
-              <ArrowLink href={`mailto:${email}`} tone="lavender" className="contact-button">
+              <ArrowLink href={`${appBasePath}a-propos`} tone="lavender" className="contact-button">
                 Écrivez-moi
               </ArrowLink>
               <ArrowLink

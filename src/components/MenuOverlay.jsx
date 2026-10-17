@@ -8,15 +8,21 @@ const basePath = import.meta.env.BASE_URL
 function MenuOverlay({ onClose }) {
   const dialogRef = useRef(null)
   const closeButtonRef = useRef(null)
+  const appBasePath = window.location.pathname.startsWith(basePath) ? basePath : '/'
   const appPath = window.location.pathname.startsWith(basePath)
     ? `/${window.location.pathname.slice(basePath.length)}`
     : window.location.pathname
-  const isProjectsPage = appPath.replace(/\/$/, '') === '/projets'
+  const route = appPath.replace(/\/+$/, '') || '/'
+  const isHomePage = route === '/'
+  const isAboutPage = route === '/a-propos'
   const destinations = [
-    { label: 'Accueil', href: isProjectsPage ? basePath : '#top' },
-    { label: 'Projets', href: `${basePath}projets` },
-    { label: 'À propos', href: isProjectsPage ? `${basePath}#about` : '#about' },
-    { label: 'Contact', href: isProjectsPage ? `${basePath}#contact` : '#contact' },
+    { label: 'Accueil', href: isHomePage ? '#top' : `${appBasePath}#top` },
+    { label: 'Projets', href: `${appBasePath}projets` },
+    { label: 'À propos', href: `${appBasePath}a-propos` },
+    {
+      label: 'Contact',
+      href: isHomePage || isAboutPage ? '#contact' : `${appBasePath}#contact`,
+    },
   ]
 
   function closeOnInternalLink(event) {
@@ -155,7 +161,7 @@ function MenuOverlay({ onClose }) {
                 E-mail <span aria-hidden="true">↗</span>
               </a>
               <a
-                href={isProjectsPage ? `${basePath}#contact` : '#contact'}
+                href={isHomePage || isAboutPage ? '#contact' : `${appBasePath}#contact`}
                 onClick={closeOnInternalLink}
               >
                 Me contacter <span aria-hidden="true">↗</span>
