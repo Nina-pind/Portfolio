@@ -1,0 +1,52 @@
+/* La carte sert de repère : l'étiquette se place sur l'angle du visuel */
+.project-card,
+.archive-card {
+  position: relative;
+}
+
+.project-tag {
+  position: absolute;
+  z-index: 2;
+  top: 14px;
+  right: 14px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: var(--fs-s);
+  font-weight: var(--fw-strong);
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none; /* le clic traverse l'étiquette et ouvre le visuel */
+}
+
+.project-tag--inline {
+  position: static;
+}
+
+/* « Académique · BUT2 » */
+.project-tag__dot {
+  margin: 0 7px;
+}
+
+.project-tag--academique {
+  background: var(--lavender);
+}
+
+.project-tag--personnel {
+  background: var(--pink);
+}
+
+.project-tag--stage {
+  background: var(--peach);
+}
+
+@media (max-width: 760px) {
+  .project-tag {
+    top: 10px;
+    right: 10px;
+  }
+}

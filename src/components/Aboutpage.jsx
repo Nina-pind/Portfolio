@@ -34,13 +34,8 @@ const timeline = [
   },
   {
     period: '2026',
-    title: 'Concours sweat MMI',
-    text: 'Design du sweat du département · Photoshop, Illustrator.',
-  },
-  {
-    period: '2026',
-    title: 'Flyers HIERO',
-    text: 'Promotion de concerts · Photoshop, tablette graphique.',
+    title: 'Stage chez Graphitéine',
+    text: 'Agence de communication et design graphique à Limoges.',
   },
 ]
 

@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import './MenuOverlay.css'
 
-const email = 'ninapinardel@gmail.com'
+const email = 'ninapinardel.pro@gmail.com'
 const basePath = import.meta.env.BASE_URL
 
 function MenuOverlay({ onClose }) {

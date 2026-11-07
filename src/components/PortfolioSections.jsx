@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import MenuOverlay from './MenuOverlay.jsx'
+import ProjectTag from './ProjectTag.jsx'
+import { projectPath, projects as allProjects } from '../data/projects.js'
 import sweatBackArtwork from '../assets/Mesprojets/sweatmmi/Back pull BLANC noir.png'
 import hieroDancerArtwork from '../assets/Mesprojets/flyerhiero/danseuse.jpg'
 
-const email = 'ninapinardel@gmail.com'
+const email = 'ninapinardel.pro@gmail.com'
 const basePath = import.meta.env.BASE_URL
 const appBasePath = window.location.pathname.startsWith(basePath) ? basePath : '/'
 
@@ -263,21 +265,28 @@ const projects = [
 ]
 
 function ProjectCard({ project, index }) {
+  const source = allProjects.find((item) => item.title === project.title) // type et année de BUT
   return (
     <article className={`project-card project-card--${index + 1}`}>
-      <figure className={`project-art project-art--${index + 1}`}>
-        <img
-          alt={project.artworkAlt}
-          className="project-art__image"
-          decoding="async"
-          loading="lazy"
-          src={project.artwork}
-        />
-      </figure>
+      <a aria-hidden="true" className="project-card__link" href={projectPath(project)} tabIndex={-1}>
+        <figure className={`project-art project-art--${index + 1}`}>
+          <img
+            alt={project.artworkAlt}
+            className="project-art__image"
+            decoding="async"
+            loading="lazy"
+            src={project.artwork}
+          />
+        </figure>
+      </a>
+      <ProjectTag but={source?.but} type={source?.type} />
       <div className="project-details">
         <div>
           {project.subtitle && <p className="project-subtitle">{project.subtitle}</p>}
-          <h3>{project.title}<span>.</span></h3>
+          <h3>
+            <a href={projectPath(project)}>{project.title}</a>
+            <span>.</span>
+          </h3>
         </div>
         <div className="project-description">
           <p>{project.description}</p>
@@ -301,7 +310,7 @@ function ProjectsSection() {
         ))}
       </div>
       <a className="text-link all-projects" href={`${basePath}projets`}>
-        <span>Tous les projets · 12</span>
+        <span>Tous les projets</span>
         <span aria-hidden="true">↗</span>
       </a>
     </section>
@@ -337,7 +346,7 @@ function AboutSection() {
           ref={tilt.ref}
         >
           <p className="about-intro">
-            Hello ! Moi, c’est Nina, j’ai 20 ans et je suis toujours en train de chercher une nouvelle idée à transformer en quelque chose de concret !
+            Salut ! Moi, c’est Nina, j’ai 20 ans et je suis toujours en train de chercher une nouvelle idée à transformer en quelque chose de concret !
           </p>
           <p>
             J’aime créer sous toutes ses formes : design, illustration, communication visuelle, web… mais aussi dessin, peinture, couture et autres activités manuelles. Ce que j’aime surtout, c’est partir d’une idée, parfois toute simple, et la voir prendre forme petit à petit.
@@ -391,11 +400,7 @@ function Footer() {
     <footer className="site-footer">
       <span className="footer-copyright">© 2026 Nina Pinardel</span>
       <span className="footer-location">Limoges · Brive · France</span>
-      <a
-        className="footer-legal"
-        href={`mailto:${email}?subject=Demande%20des%20mentions%20l%C3%A9gales`}
-        title="Demander les mentions légales par e-mail"
-      >
+      <a className="footer-legal" href={`${appBasePath}mentions-legales`}>
         Mentions légales
       </a>
     </footer>

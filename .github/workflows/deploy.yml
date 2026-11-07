@@ -47,6 +47,11 @@ jobs:
           mkdir -p dist/a-propos
           cp dist/index.html dist/a-propos/index.html
 
+      - name: Prepare legal notice route
+        run: |
+          mkdir -p dist/mentions-legales
+          cp dist/index.html dist/mentions-legales/index.html
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 

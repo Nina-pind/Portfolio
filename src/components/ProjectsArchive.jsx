@@ -1,16 +1,16 @@
 import { useMemo, useState } from 'react'
-import { projectCategories, projects } from '../data/projects.js'
+import { projectCategories, projectPath, projects } from '../data/projects.js'
+import ProjectTag from './ProjectTag.jsx'
 import './ProjectsArchive.css'
 
 function ProjectCard({ project, index }) {
   return (
     <article className={`archive-card archive-card--${(index % 4) + 1}`}>
       <a
-        aria-label={`Ouvrir le visuel de ${project.title} dans un nouvel onglet`}
+        aria-hidden="true"
         className="archive-card__visual-link"
-        href={project.image}
-        rel="noreferrer"
-        target="_blank"
+        href={projectPath(project)}
+        tabIndex={-1}
       >
         <figure className="archive-card__visual">
           <img
@@ -24,9 +24,12 @@ function ProjectCard({ project, index }) {
           </span>
         </figure>
       </a>
+      <ProjectTag but={project.but} type={project.type} />
       <div className="archive-card__details">
         <div>
-          <h2>{project.title}</h2>
+          <h2>
+            <a href={projectPath(project)}>{project.title}</a>
+          </h2>
           <p>{project.description}</p>
         </div>
         <div className="archive-card__meta">

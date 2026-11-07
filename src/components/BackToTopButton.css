@@ -15,8 +15,8 @@
   color: var(--ink);
   box-shadow: 0 5px 20px rgba(16, 13, 16, 0.1);
   font: inherit;
-  font-size: 10px;
-  font-weight: 750;
+  font-size: var(--fs-s);
+  font-weight: var(--fw-strong);
   cursor: pointer;
   transition: background-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
 }
